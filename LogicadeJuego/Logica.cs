@@ -27,6 +27,15 @@ namespace LogicadeJuego
         }
 
         // metodo para aumentar el nivel del juego 
+        public void AumentodeNivel()
+        {
+            datosJuego.nivelActual += 1;
+        }
+        //metodo para resetear
+        public void Reinicio()
+        {
+            datosJuego.nivelActual = 3;
+        }
         // metodo de gane y perdida  
         // metodo que compara casilla por casilla la secuencia de la computadora con la respuesta del jugador para saber si es correcta
 
