@@ -9,36 +9,28 @@ namespace LogicadeJuego
 
         public Datos datosJuego;
         Random generadordenumerosaleatorios;
-        int secuenciaComputadadora;
-        int niveldedificultad;
+        
 
         // Metodo constructor
 
         public Logica()
         {
             datosJuego = new Datos();
-            datosJuego.secuenciaJugador = new int[10];
-            datosJuego.secuenciaComputadora = new int[10];
+            datosJuego.secuenciaJugador = new int[3];
+            datosJuego.secuenciaComputadora = new int[3];
             datosJuego.nivelActual = 3;
             generadordenumerosaleatorios = new Random();
-            secuenciaComputadadora = generadordenumerosaleatorios.Next(0,10);
+            //secuenciaComputadadora = generadordenumerosaleatorios.Next(0,10);
         }
             
         // Metodo llenar la secuencia de la computadora con numeros aleatorio
       
         public void llenarSecuencia()
         {
-            datosJuego.secuenciaComputadora[0] = 2;
-            datosJuego.secuenciaComputadora[1] = 3;
-            datosJuego.secuenciaComputadora[2] = 0;
-            datosJuego.secuenciaComputadora[3] = 1;
-            datosJuego.secuenciaComputadora[4] = 4;
-            datosJuego.secuenciaComputadora[5] = 9;
-            datosJuego.secuenciaComputadora[6] = 8;
-            datosJuego.secuenciaComputadora[7] = 5;
-            datosJuego.secuenciaComputadora[8] = 6;
-            datosJuego.secuenciaComputadora[9] = 7;
-        
+            datosJuego.secuenciaComputadora[0] = generadordenumerosaleatorios.Next(0, 10);
+            datosJuego.secuenciaComputadora[1] = generadordenumerosaleatorios.Next(0, 10);
+            datosJuego.secuenciaComputadora[2] = generadordenumerosaleatorios.Next(0, 10);
+
         }
 
         // metodo para aumentar el nivel del juego 
@@ -57,8 +49,7 @@ namespace LogicadeJuego
 
         public void progresodeljuego()
         {
-            niveldedificultad += 1;
-            secuenciaComputadadora = generadordenumerosaleatorios.Next(0, 9);
+            datosJuego.nivelActual += 1;
         }
 
         // metodo de gane   
