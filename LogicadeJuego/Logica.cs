@@ -33,12 +33,15 @@ namespace LogicadeJuego
 
         }
 
+
+
         // metodo para aumentar el nivel del juego 
 
         public void AumentodeNivel()
         {
             datosJuego.nivelActual += 1;
         }
+
         //metodo para resetear
         public void Reinicio()
         {
@@ -52,14 +55,32 @@ namespace LogicadeJuego
             datosJuego.nivelActual += 1;
         }
 
-        // metodo de gane   
         // metodo que compara casilla por casilla la secuencia de la computadora con la respuesta del jugador para saber si es correcta
-        // metodo para mostrar y restar vidas
+
+        public bool Comparaciondecasillas()
+        {
+            if (datosJuego.secuenciaJugador[0] == datosJuego.secuenciaComputadora[0])
+                return true;
+
+            else if (datosJuego.secuenciaJugador[1] == datosJuego.secuenciaComputadora[1])
+                return true;
+            else if (datosJuego.secuenciaJugador[2] == datosJuego.secuenciaComputadora[2])
+                return true;
+            else
+                return false;
+        }
+
+        public int dificultadactual()
+        {
+            return datosJuego.nivelActual;
+        }
+
         // metodo para el tiempo de respuesta 
-        // metodo para la aleotioridad 
-        // "metodo para fallo o acierto acierto del jugador"
+
         // metodo para aumentar la cantidad de numeros de la secuencia 
         // metodo para obtener la respuesta del jugador 
+
+        
         // metodo para mostrar la secuecnia numeral 
         // metodo para de tiempo para mostrar la secuencia
         // metodo para dejar de mostrar la secuencia
@@ -75,6 +96,6 @@ namespace LogicadeJuego
         // metodo para el parpadeo de una una secuencia 
         // 
 
-        
+
     }
 }

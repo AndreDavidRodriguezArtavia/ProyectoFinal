@@ -86,8 +86,10 @@ namespace ProyectoFinalAndreRodriguez
 
         static public void Comienzodeljuego()
         {
-
+   
         }
+
+            
 
         // Funcion que transforma el texto y regresa por el error a -1
 
