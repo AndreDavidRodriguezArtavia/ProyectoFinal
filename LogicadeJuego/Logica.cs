@@ -9,7 +9,7 @@ namespace LogicadeJuego
 
         public Datos datosJuego;
         Random generadordenumerosaleatorios;
-        
+
 
         // Metodo constructor
 
@@ -20,20 +20,26 @@ namespace LogicadeJuego
             datosJuego.secuenciaComputadora = new int[3];
             datosJuego.nivelActual = 3;
             generadordenumerosaleatorios = new Random();
-            //secuenciaComputadadora = generadordenumerosaleatorios.Next(0,10);
+
         }
-            
+
         // Metodo llenar la secuencia de la computadora con numeros aleatorio
-      
-        public void llenarSecuencia()
+
+         public void llenarSecuenciacomputadora(int nivel)
         {
-            datosJuego.secuenciaComputadora[0] = generadordenumerosaleatorios.Next(0, 10);
-            datosJuego.secuenciaComputadora[1] = generadordenumerosaleatorios.Next(0, 10);
-            datosJuego.secuenciaComputadora[2] = generadordenumerosaleatorios.Next(0, 10);
+
+            Console.WriteLine("entro a llenar secuencia de computadora con nivel "+ nivel);
+            // para llenar se necesia los arreglos 
+            // numero aleatorio (0,9)
+            // crear los campos del nivel actual
+            for (int i = 0; i<nivel;i++)
+            {
+  
+                datosJuego.secuenciaComputadora[i] = generadordenumerosaleatorios.Next(0, 10);
+                
+            }
 
         }
-
-
 
         // metodo para aumentar el nivel del juego 
 
@@ -48,26 +54,32 @@ namespace LogicadeJuego
             datosJuego.nivelActual = 3;
         }
 
-        // metodo de progresar juego
-
-        public void progresodeljuego()
-        {
-            datosJuego.nivelActual += 1;
-        }
-
+ 
         // metodo que compara casilla por casilla la secuencia de la computadora con la respuesta del jugador para saber si es correcta
 
-        public bool Comparaciondecasillas()
+        public bool Comparaciondecasillas(int[]jugador, int[]computadora)
         {
-            if (datosJuego.secuenciaJugador[0] == datosJuego.secuenciaComputadora[0])
-                return true;
+            bool  comparacion = true;
+            for (int i = 0; i < jugador.Length; i++)
+            {
+                if (jugador[i] != computadora[i])
+                {
+                    comparacion = false;
+                    break;
+                }
+            }
+            return comparacion; 
 
-            else if (datosJuego.secuenciaJugador[1] == datosJuego.secuenciaComputadora[1])
+            
+            //if (jugador[0] == computadora[0])
+               // return true;
+
+            /*else if jugador[1] == computadora[1])
                 return true;
-            else if (datosJuego.secuenciaJugador[2] == datosJuego.secuenciaComputadora[2])
+            else if (jugador[2] == computadora[2])
                 return true;
             else
-                return false;
+                return false;*/
         }
 
         public int dificultadactual()
@@ -82,19 +94,18 @@ namespace LogicadeJuego
 
         
         // metodo para mostrar la secuecnia numeral 
+
         // metodo para de tiempo para mostrar la secuencia
         // metodo para dejar de mostrar la secuencia
-        // metodo de incio de juego 
-        // metodo de instruciones 
-        // metodo de cerditos
-        // metodo para salir del juego
-        // metodo para la dificultad actual
-        // metodo de perdida
+      
+       
+       
+      
         // metodo para entregar la secuencia 
         //  metodo para el aumento de numero en la secuencia 
         // metodo  obtener  la secuencia de la computadora en la dificultad actual 
         // metodo para el parpadeo de una una secuencia 
-        // 
+        
 
 
     }

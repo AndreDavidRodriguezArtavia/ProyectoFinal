@@ -1,13 +1,20 @@
-﻿using LogicadeJuego;
+﻿using Entidades;
+using LogicadeJuego;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ProyectoFinalAndreRodriguez
 {
     internal class Program
     {
+        static Logica LogicadeJuego = new Logica();
+        
+
+
+
         static void Main(string[] args)
         {
             int SeleccionDelUsuario = 0;
-
+            
             // Cliclo (Gameloop)
             while (SeleccionDelUsuario != 4)
             {
@@ -31,6 +38,7 @@ namespace ProyectoFinalAndreRodriguez
                     Console.WriteLine("Has escogido iniciar el juego seras enviado al nivel de inicio del juego");
                     Console.ReadLine();
                     Comienzodeljuego();
+                    Console.ReadLine();
                 }
                 else if (SeleccionDelUsuario == 2)
                 {
@@ -86,10 +94,35 @@ namespace ProyectoFinalAndreRodriguez
 
         static public void Comienzodeljuego()
         {
+
+
+
+            // primer paso se llena la secuencia de la computadora
+            Console.WriteLine("llamado a llenar secuencia");
+            LogicadeJuego.llenarSecuenciacomputadora(LogicadeJuego.datosJuego.nivelActual);
    
+            Console.WriteLine("los numeros a memorizar son:");
+            for (int i = 0; i < LogicadeJuego.datosJuego.nivelActual; i++)
+            {
+
+                Console.Write(LogicadeJuego.datosJuego.secuenciaComputadora[i]); 
+
+            }
+            // se quita la secuencia de la computadora de la vista del jugador
+            // segundo se le pedira al jugador escrbir la secuencia 
+            // obtener la respuesta 
+            // llenar la secuencia del jugador 
+            // comparar las secuencias
+            // indicar si la respuesta esta correcta 
+            // si la respuesta es correcta se avanza al siguiente nivel 
+            // se aumenta y llena la secuencia 
+            // se quita de la vista del jugador 
+            // se pedira la respuesta 
+            // se llenara la secuencia del jugador 
+            // se compararan las secuencia 
+            // se indicara si gano o no 
         }
 
-            
 
         // Funcion que transforma el texto y regresa por el error a -1
 
