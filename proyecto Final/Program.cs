@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using LogicadeJuego;
+using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 
 namespace ProyectoFinalAndreRodriguez
@@ -7,14 +8,14 @@ namespace ProyectoFinalAndreRodriguez
     internal class Program
     {
         static Logica LogicadeJuego = new Logica();
-        
+
 
 
 
         static void Main(string[] args)
         {
             int SeleccionDelUsuario = 0;
-            
+
             // Cliclo (Gameloop)
             while (SeleccionDelUsuario != 4)
             {
@@ -44,7 +45,7 @@ namespace ProyectoFinalAndreRodriguez
                 {
                     // cuando se escoge 2 se mostraran las instruciones
                     Instrucciones();
-                } 
+                }
                 else if (SeleccionDelUsuario == 3)
                 {
                     // cuando se escogue 3 se mostraran los creditos
@@ -94,38 +95,80 @@ namespace ProyectoFinalAndreRodriguez
 
         static public void Comienzodeljuego()
         {
+            int Respuestadeljugador;
 
 
 
             // primer paso se llena la secuencia de la computadora
             Console.WriteLine("llamado a llenar secuencia");
             LogicadeJuego.llenarSecuenciacomputadora(LogicadeJuego.datosJuego.nivelActual);
-   
+
             Console.WriteLine("los numeros a memorizar son:");
             for (int i = 0; i < LogicadeJuego.datosJuego.nivelActual; i++)
             {
+                Console.Write(LogicadeJuego.datosJuego.secuenciaComputadora[i]);
+            }
+            Console.ReadLine();
+            // se quita la secuencia de la computadora de la vista del jugador
 
-                Console.Write(LogicadeJuego.datosJuego.secuenciaComputadora[i]); 
+            Console.Clear();
+
+            // segundo se le pedira al jugador escrbir la secuencia 
+            // Para obtener la respuesta
+            Console.Write("Los numeros que se memorizaron son: ");
+            LogicadeJuego.LlenarSecuenciaJugador(LogicadeJuego.datosJuego.nivelActual);
+            for (int i = 0; i < LogicadeJuego.datosJuego.nivelActual; i++)
+            {
+                Respuestadeljugador = CapturarRespuesta();
+            }
+
+            
+            // se indicara si gano o no 
+            if (LogicadeJuego.evaluacionderespuesta() == true)
+            {
+                // si la respuesta es correcta se avanza al siguiente nivel 
+                Console.WriteLine("!Felicidades¡, has acertado avanzas al siguiente nivel");
+                LogicadeJuego.AumentodeNivel();
+            }
+            else
+            {
+                Console.WriteLine("Has fallo, vuelve a interlo");
+                Console.ReadLine();
 
             }
-            // se quita la secuencia de la computadora de la vista del jugador
-            // segundo se le pedira al jugador escrbir la secuencia 
-            // obtener la respuesta 
-            // llenar la secuencia del jugador 
-            // comparar las secuencias
-            // indicar si la respuesta esta correcta 
-            // si la respuesta es correcta se avanza al siguiente nivel 
+
+
+
+
+
+
+            
             // se aumenta y llena la secuencia 
             // se quita de la vista del jugador 
             // se pedira la respuesta 
             // se llenara la secuencia del jugador 
             // se compararan las secuencia 
-            // se indicara si gano o no 
+            
         }
 
-
+        // funcion para transformar el texto y mostrar error -1
+        static public int CapturarRespuesta()
+        {
+            try
+            {
+                string respuestaescritaporeljugador;
+                respuestaescritaporeljugador = Console.ReadLine();
+                return int.Parse(respuestaescritaporeljugador);
+            }
+            catch
+            {
+                Console.WriteLine("error al digitar su respuesta");
+                Console.WriteLine("porfavor solo digitar numeros del 0 al 9");
+                Console.ReadLine();
+                return 0;  
+            }
+        }
         // Funcion que transforma el texto y regresa por el error a -1
-
         static public int CapturarNumero()
         {
             try
@@ -143,6 +186,24 @@ namespace ProyectoFinalAndreRodriguez
             }
         }
 
+        // metodo para la capturar la respuesta del jugador
+        /*static public int CapturarlaRespuestaJugador()
+        {
+            try
+            {
+                string respuestaescritaporeljugador;
+                respuestaescritaporeljugador = Console.ReadLine();
+                return  respuestaescritaporeljugador;
+            }
+            catch
+            {
+                Console.WriteLine("Error al escribir la respuesta");
+                Console.WriteLine("solo se acepta los numeros del 0 al 9");
+                Console.WriteLine("Vuelva a digitar la secuencia memorizada");
+                Console.ReadLine();
+                return -1;
+            }
+        }*/
         // metodo para que se enseñen las opciones 
 
         static public void Opciones()

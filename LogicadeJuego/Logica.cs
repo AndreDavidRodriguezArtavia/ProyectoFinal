@@ -9,6 +9,7 @@ namespace LogicadeJuego
 
         public Datos datosJuego;
         Random generadordenumerosaleatorios;
+        private int Respuestadeljugador;
 
 
         // Metodo constructor
@@ -25,20 +26,33 @@ namespace LogicadeJuego
 
         // Metodo llenar la secuencia de la computadora con numeros aleatorio
 
-         public void llenarSecuenciacomputadora(int nivel)
+        public void llenarSecuenciacomputadora(int nivel)
         {
 
-            Console.WriteLine("entro a llenar secuencia de computadora con nivel "+ nivel);
+            Console.WriteLine("entro a llenar secuencia de computadora con nivel " + nivel);
             // para llenar se necesia los arreglos 
             // numero aleatorio (0,9)
             // crear los campos del nivel actual
-            for (int i = 0; i<nivel;i++)
+            for (int i = 0; i < nivel; i++)
             {
-  
+
                 datosJuego.secuenciaComputadora[i] = generadordenumerosaleatorios.Next(0, 10);
-                
+
             }
 
+        }
+
+        // metodo para responder a la secuencia 
+
+        public void LlenarSecuenciaJugador(int nivel)
+        {
+            Console.WriteLine("entro a llenar la secuencia del jugador");
+            for (int i = 0; i < nivel; i++)
+            {
+                datosJuego.secuenciaJugador[i] = Respuestadeljugador;
+
+            }
+            
         }
 
         // metodo para aumentar el nivel del juego 
@@ -87,13 +101,22 @@ namespace LogicadeJuego
             return datosJuego.nivelActual;
         }
 
+        // para evalauar la respuesta 
+        public bool evaluacionderespuesta()
+        {
+            if (Respuestadeljugador == datosJuego.secuenciaJugador[Respuestadeljugador])
+                return true;
+            else
+                return false;
+
+           
+        }
         // metodo para el tiempo de respuesta 
 
-        // metodo para aumentar la cantidad de numeros de la secuencia 
-        // metodo para obtener la respuesta del jugador 
-
+         
         
-        // metodo para mostrar la secuecnia numeral 
+
+         
 
         // metodo para de tiempo para mostrar la secuencia
         // metodo para dejar de mostrar la secuencia
@@ -101,9 +124,8 @@ namespace LogicadeJuego
        
        
       
-        // metodo para entregar la secuencia 
-        //  metodo para el aumento de numero en la secuencia 
-        // metodo  obtener  la secuencia de la computadora en la dificultad actual 
+        
+        
         // metodo para el parpadeo de una una secuencia 
         
 
