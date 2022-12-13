@@ -44,7 +44,7 @@ namespace LogicadeJuego
 
         // metodo para responder a la secuencia 
 
-        public void LlenarSecuenciaJugador(int nivel)
+       /* public void LlenarSecuenciaJugador(int nivel)
         {
             Console.WriteLine("entro a llenar la secuencia del jugador");
             for (int i = 0; i < nivel; i++)
@@ -53,19 +53,24 @@ namespace LogicadeJuego
 
             }
             
-        }
+        }*/
 
         // metodo para aumentar el nivel del juego 
 
         public void AumentodeNivel()
         {
             datosJuego.nivelActual += 1;
+            datosJuego.secuenciaJugador = new int[datosJuego.nivelActual];
+            datosJuego.secuenciaComputadora = new int[datosJuego.nivelActual];
+
         }
 
         //metodo para resetear
         public void Reinicio()
         {
             datosJuego.nivelActual = 3;
+            datosJuego.secuenciaJugador = new int[datosJuego.nivelActual];
+            datosJuego.secuenciaComputadora = new int[datosJuego.nivelActual];
         }
 
  
@@ -101,16 +106,6 @@ namespace LogicadeJuego
             return datosJuego.nivelActual;
         }
 
-        // para evalauar la respuesta 
-        public bool evaluacionderespuesta()
-        {
-            if (Respuestadeljugador == datosJuego.secuenciaJugador[Respuestadeljugador])
-                return true;
-            else
-                return false;
-
-           
-        }
         // metodo para el tiempo de respuesta 
 
          

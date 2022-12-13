@@ -95,7 +95,7 @@ namespace ProyectoFinalAndreRodriguez
 
         static public void Comienzodeljuego()
         {
-            int Respuestadeljugador;
+
 
 
 
@@ -116,15 +116,22 @@ namespace ProyectoFinalAndreRodriguez
             // segundo se le pedira al jugador escrbir la secuencia 
             // Para obtener la respuesta
             Console.Write("Los numeros que se memorizaron son: ");
-            LogicadeJuego.LlenarSecuenciaJugador(LogicadeJuego.datosJuego.nivelActual);
+           /* LogicadeJuego.LlenarSecuenciaJugador(LogicadeJuego.datosJuego.nivelActual);borrar*/
             for (int i = 0; i < LogicadeJuego.datosJuego.nivelActual; i++)
             {
-                Respuestadeljugador = CapturarRespuesta();
+                int respuestaescritaporeljugador = CapturarRespuesta();
+                // da una nueva oportunidad de no cometer el error
+                if ( respuestaescritaporeljugador == -1)
+                {
+                    respuestaescritaporeljugador = CapturarRespuesta();
+                }
+                LogicadeJuego.datosJuego.secuenciaJugador[i] = respuestaescritaporeljugador;
+                Console.WriteLine("secuencia de jugador"+ LogicadeJuego.datosJuego.secuenciaJugador[i]);
             }
 
-            
+
             // se indicara si gano o no 
-            if (LogicadeJuego.evaluacionderespuesta() == true)
+            if (LogicadeJuego.Comparaciondecasillas(LogicadeJuego.datosJuego.secuenciaJugador, LogicadeJuego.datosJuego.secuenciaComputadora) == true)
             {
                 // si la respuesta es correcta se avanza al siguiente nivel 
                 Console.WriteLine("!Felicidades¡, has acertado avanzas al siguiente nivel");
@@ -156,21 +163,34 @@ namespace ProyectoFinalAndreRodriguez
         {
             try
             {
-                string respuestaescritaporeljugador;
-                respuestaescritaporeljugador = Console.ReadLine();
-                return int.Parse(respuestaescritaporeljugador);
+                Console.WriteLine("escriba un numero");
+                int respuestaescritaporeljugador;
+                respuestaescritaporeljugador = int.Parse(Console.ReadLine());
+                Console.WriteLine("intento de try"+ respuestaescritaporeljugador);
+                if(respuestaescritaporeljugador <= 9)
+                {
+                    return respuestaescritaporeljugador;
+                }
+                else
+                {
+                    Console.WriteLine("error al digitar su respuesta");
+                    Console.WriteLine("porfavor solo digitar numeros del 0 al 9");
+                    Console.ReadLine();
+                    return -1;
+                }
             }
             catch
             {
                 Console.WriteLine("error al digitar su respuesta");
                 Console.WriteLine("porfavor solo digitar numeros del 0 al 9");
                 Console.ReadLine();
-                return 0;  
+                return -1;  
             }
         }
         // Funcion que transforma el texto y regresa por el error a -1
         static public int CapturarNumero()
         {
+            // corregir
             try
             {
                 string textoEscritoPorElUsuario;
