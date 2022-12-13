@@ -21,18 +21,13 @@ namespace LogicadeJuego
             datosJuego.secuenciaComputadora = new int[3];
             datosJuego.nivelActual = 3;
             generadordenumerosaleatorios = new Random();
-
         }
 
         // Metodo llenar la secuencia de la computadora con numeros aleatorio
 
         public void llenarSecuenciacomputadora(int nivel)
         {
-
-            Console.WriteLine("entro a llenar secuencia de computadora con nivel " + nivel);
-            // para llenar se necesia los arreglos 
-            // numero aleatorio (0,9)
-            // crear los campos del nivel actual
+            Console.WriteLine("Usted se encuentra en el nivel : " + nivel);
             for (int i = 0; i < nivel; i++)
             {
 
@@ -42,19 +37,6 @@ namespace LogicadeJuego
 
         }
 
-        // metodo para responder a la secuencia 
-
-       /* public void LlenarSecuenciaJugador(int nivel)
-        {
-            Console.WriteLine("entro a llenar la secuencia del jugador");
-            for (int i = 0; i < nivel; i++)
-            {
-                datosJuego.secuenciaJugador[i] = Respuestadeljugador;
-
-            }
-            
-        }*/
-
         // metodo para aumentar el nivel del juego 
 
         public void AumentodeNivel()
@@ -62,6 +44,7 @@ namespace LogicadeJuego
             datosJuego.nivelActual += 1;
             datosJuego.secuenciaJugador = new int[datosJuego.nivelActual];
             datosJuego.secuenciaComputadora = new int[datosJuego.nivelActual];
+
 
         }
 
@@ -88,42 +71,11 @@ namespace LogicadeJuego
                 }
             }
             return comparacion; 
-
-            
-            //if (jugador[0] == computadora[0])
-               // return true;
-
-            /*else if jugador[1] == computadora[1])
-                return true;
-            else if (jugador[2] == computadora[2])
-                return true;
-            else
-                return false;*/
         }
 
         public int dificultadactual()
         {
             return datosJuego.nivelActual;
         }
-
-        // metodo para el tiempo de respuesta 
-
-         
-        
-
-         
-
-        // metodo para de tiempo para mostrar la secuencia
-        // metodo para dejar de mostrar la secuencia
-      
-       
-       
-      
-        
-        
-        // metodo para el parpadeo de una una secuencia 
-        
-
-
     }
 }

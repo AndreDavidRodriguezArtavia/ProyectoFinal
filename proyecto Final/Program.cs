@@ -15,31 +15,36 @@ namespace ProyectoFinalAndreRodriguez
         static void Main(string[] args)
         {
             int SeleccionDelUsuario = 0;
+            
+            // Opcion para enseñar la portada
+            MostrarlaPortada();
+
+            // se va a mostrar las opciones que se va a tener para que el jugador eliga cual quiere
+
+            Opciones();
 
             // Cliclo (Gameloop)
             while (SeleccionDelUsuario != 4)
             {
-
-                //Opción para enseñar la portada 
-
-                MostrarlaPortada();
-
-                // se va a mostrar las opciones que se va a tener para que el jugador eliga cual quiere
-
-                Opciones();
-
+               // Indicador de gane para el jugador 
+                if (LogicadeJuego.datosJuego.nivelActual == 13)
+                {
+                    Console.WriteLine("has alcanzado el nivel final y lo has superado felicidades has terminado el juego muchas gracias por participar");
+                    Console.ReadLine();
+                    break;
+                }
+  
                 //Manera para obtener la escogencia del jugador 
 
                 SeleccionDelUsuario = CapturarNumero();
 
-
+                // selecciones posibles junto a las desiciones del jugador
                 if (SeleccionDelUsuario == 1)
                 {
                     // cuando se escoge 1 se comienza el juego
                     Console.WriteLine("Has escogido iniciar el juego seras enviado al nivel de inicio del juego");
                     Console.ReadLine();
                     Comienzodeljuego();
-                    Console.ReadLine();
                 }
                 else if (SeleccionDelUsuario == 2)
                 {
@@ -95,27 +100,27 @@ namespace ProyectoFinalAndreRodriguez
 
         static public void Comienzodeljuego()
         {
+            //Se llena la secuencia de la computadora
 
-
-
-
-            // primer paso se llena la secuencia de la computadora
-            Console.WriteLine("llamado a llenar secuencia");
             LogicadeJuego.llenarSecuenciacomputadora(LogicadeJuego.datosJuego.nivelActual);
 
+            //Manera de Mostrar la secuencia de la computadora
             Console.WriteLine("los numeros a memorizar son:");
             for (int i = 0; i < LogicadeJuego.datosJuego.nivelActual; i++)
             {
                 Console.Write(LogicadeJuego.datosJuego.secuenciaComputadora[i]);
             }
             Console.ReadLine();
+
             // se quita la secuencia de la computadora de la vista del jugador
 
             Console.Clear();
 
             // segundo se le pedira al jugador escrbir la secuencia 
             // Para obtener la respuesta
-            Console.Write("Los numeros que se memorizaron son: ");
+            Console.WriteLine("para poder escribir los numeros memorizados, escribir de uno en uno, en renglones aparte");
+            Console.WriteLine("Digitar los numeros en el orden en el que salio en la secuencia");
+           
            /* LogicadeJuego.LlenarSecuenciaJugador(LogicadeJuego.datosJuego.nivelActual);borrar*/
             for (int i = 0; i < LogicadeJuego.datosJuego.nivelActual; i++)
             {
@@ -126,7 +131,6 @@ namespace ProyectoFinalAndreRodriguez
                     respuestaescritaporeljugador = CapturarRespuesta();
                 }
                 LogicadeJuego.datosJuego.secuenciaJugador[i] = respuestaescritaporeljugador;
-                Console.WriteLine("secuencia de jugador"+ LogicadeJuego.datosJuego.secuenciaJugador[i]);
             }
 
 
@@ -136,26 +140,17 @@ namespace ProyectoFinalAndreRodriguez
                 // si la respuesta es correcta se avanza al siguiente nivel 
                 Console.WriteLine("!Felicidades¡, has acertado avanzas al siguiente nivel");
                 LogicadeJuego.AumentodeNivel();
+                Opciones();
             }
             else
             {
                 Console.WriteLine("Has fallo, vuelve a interlo");
                 Console.ReadLine();
+                Console.Clear();
+                MostrarlaPortada();
+                Opciones();
 
             }
-
-
-
-
-
-
-            
-            // se aumenta y llena la secuencia 
-            // se quita de la vista del jugador 
-            // se pedira la respuesta 
-            // se llenara la secuencia del jugador 
-            // se compararan las secuencia 
-            
         }
 
         // funcion para transformar el texto y mostrar error -1
@@ -163,10 +158,9 @@ namespace ProyectoFinalAndreRodriguez
         {
             try
             {
-                Console.WriteLine("escriba un numero");
+                Console.Write("digite el siguiente numero de la se la secuencia: ");
                 int respuestaescritaporeljugador;
                 respuestaescritaporeljugador = int.Parse(Console.ReadLine());
-                Console.WriteLine("intento de try"+ respuestaescritaporeljugador);
                 if(respuestaescritaporeljugador <= 9)
                 {
                     return respuestaescritaporeljugador;
@@ -190,7 +184,6 @@ namespace ProyectoFinalAndreRodriguez
         // Funcion que transforma el texto y regresa por el error a -1
         static public int CapturarNumero()
         {
-            // corregir
             try
             {
                 string textoEscritoPorElUsuario;
@@ -206,24 +199,6 @@ namespace ProyectoFinalAndreRodriguez
             }
         }
 
-        // metodo para la capturar la respuesta del jugador
-        /*static public int CapturarlaRespuestaJugador()
-        {
-            try
-            {
-                string respuestaescritaporeljugador;
-                respuestaescritaporeljugador = Console.ReadLine();
-                return  respuestaescritaporeljugador;
-            }
-            catch
-            {
-                Console.WriteLine("Error al escribir la respuesta");
-                Console.WriteLine("solo se acepta los numeros del 0 al 9");
-                Console.WriteLine("Vuelva a digitar la secuencia memorizada");
-                Console.ReadLine();
-                return -1;
-            }
-        }*/
         // metodo para que se enseñen las opciones 
 
         static public void Opciones()
@@ -234,5 +209,6 @@ namespace ProyectoFinalAndreRodriguez
             Console.WriteLine("4- salir");
             Console.WriteLine("Digite su opcion escogida:");
         }
+
     }
 }
