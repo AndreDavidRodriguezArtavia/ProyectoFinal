@@ -73,6 +73,7 @@ namespace LogicadeJuego
             return comparacion; 
         }
 
+        // devuevle el nivel acutal por el que se va
         public int dificultadactual()
         {
             return datosJuego.nivelActual;

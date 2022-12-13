@@ -27,7 +27,7 @@ namespace ProyectoFinalAndreRodriguez
             while (SeleccionDelUsuario != 4)
             {
                // Indicador de gane para el jugador 
-                if (LogicadeJuego.datosJuego.nivelActual == 13)
+                if (LogicadeJuego.datosJuego.nivelActual == 12)
                 {
                     Console.WriteLine("has alcanzado el nivel final y lo has superado felicidades has terminado el juego muchas gracias por participar");
                     Console.ReadLine();
@@ -74,6 +74,7 @@ namespace ProyectoFinalAndreRodriguez
             Console.WriteLine("de ser el caso contrario perdera el juego.");
             Console.WriteLine(" Al avanzar de nivel la secuencia durara menos tiempo en ser visible y en ciertos casos se llegara a ver de una manera parpadeada");
             Console.WriteLine(" 3- El juego le indicara cuando a pasado el nivel del mismo caso sucedera con terminar o perder el juego");
+            Console.WriteLine(" 4- los niveles se representaran por la cantidad que va a tener la secuencia siendo asi que el nivel 3 se presentara como el nivel inicial");
             Console.ReadLine();
         }
 
@@ -149,6 +150,7 @@ namespace ProyectoFinalAndreRodriguez
                 Console.WriteLine("           _                                            \r\n|_| _. _ _|__.|| _         _ |   _   _. o.__|_ _ ._| _  \r\n| |(_|_>  |(_|||(_)o \\/|_|(/_|\\/(/_ (_| || ||_(/_| |(_) \r\n                   /   ");
                 Console.ReadLine();
                 Console.Clear();
+                LogicadeJuego.Reinicio();
                 MostrarlaPortada();
                 Opciones();
 
