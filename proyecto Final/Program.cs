@@ -31,7 +31,8 @@ namespace ProyectoFinalAndreRodriguez
                 {
                     Console.WriteLine("has alcanzado el nivel final y lo has superado felicidades has terminado el juego muchas gracias por participar");
                     Console.ReadLine();
-                    break;
+                    MostrarlaPortada();
+                    Opciones();
                 }
   
                 //Manera para obtener la escogencia del jugador 
@@ -42,7 +43,7 @@ namespace ProyectoFinalAndreRodriguez
                 if (SeleccionDelUsuario == 1)
                 {
                     // cuando se escoge 1 se comienza el juego
-                    Console.WriteLine("Has escogido iniciar el juego seras enviado al nivel de inicio del juego");
+                    Console.WriteLine("Has escogido jugar seras enviado al nivel corresondiente");
                     Console.ReadLine();
                     Comienzodeljuego();
                 }
