@@ -51,11 +51,13 @@ namespace ProyectoFinalAndreRodriguez
                 {
                     // cuando se escoge 2 se mostraran las instruciones
                     Instrucciones();
+                    Opciones();
                 }
                 else if (SeleccionDelUsuario == 3)
                 {
                     // cuando se escogue 3 se mostraran los creditos
                     Creditos();
+                    Opciones();
                 }
                 else if (SeleccionDelUsuario == 4)
                 {
